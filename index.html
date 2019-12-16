@@ -230,6 +230,32 @@
             text-indent: 20px;
             padding-bottom: 20px;
         }
+		
+        .ack {
+            display: inline;
+            position: absolute;
+            top: 85px;
+            margin: 0 0 0 5px;
+            background-color:#A8A23F;
+            border: 1px solid white;
+        }
+
+        .ack h3 {
+            text-align: center;
+            color: white;
+        }
+
+        .massge {
+            height: 700px;
+            width: 300px;
+            color: white;
+            overflow-y: auto;
+        }
+
+        .massge audio {
+            height: 20px;
+            width: 250px;
+        }
 			
 		</style>
 	</head>
@@ -292,6 +318,21 @@
 
 					</video>
 					
+
+					<div class="ack">
+						<h3>向老师提出问题</h3>
+						<div class="massge" id="massge">
+		
+						</div>
+						<div class="weben">
+							<form name="input">
+								<input type="text" name="qs" placeholder=" 请输入你的问题" id="qst">
+								<input type="button" value="提交" onclick="send()"><br>
+								<p></p>
+		
+							</form>
+						</div>
+					</div>
 					<div>
 						<!--弹窗-->
 		    <div class="tc">
@@ -320,6 +361,10 @@
 				<p>外语学习方法有很多，多听原声带英语，比如原声电影，电视剧，多样化学习；用联想法，把词和生动的事物结合起来，提高背单词效率；只要学习外语用心就可以学好。</p>
 				<p>The man who has made up his mind to win will never say impossible </p>
 			</div>
+
+
+			
+			
 
 		</div>
 	</body>
@@ -379,6 +424,34 @@
 	    let d1=document.getElementById("d1");
 	    d1.style.display="block";
 	}
+		var flage = true
+    var luyin = function () {
+        recOpen(
+            function () {
+                {
+                    rec.start();
+                    flage = false
+                }
+            }
+        )
+    }
+    var luyinst = function () {
+        recStop();
+    }
+    let left = false;
+    var talk = document.getElementById('massge');
+    let send = function () {
+        let node = document.createElement('p');
+        let div = document.createElement('div');
+        div.className = 'wall';
+        let textNode = document.createTextNode(document.getElementById('qst').value);
+        node.appendChild(textNode);
+        node.className = 'ltalk';
+        div.appendChild(node);
+        talk.appendChild(div);
+        document.getElementById('qst').value = "";
+
+    }
 	</script>
 
 </html>

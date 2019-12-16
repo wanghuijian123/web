@@ -14,7 +14,6 @@
 	
 	function chickMe() {
 	    videos.pause();
-	   
 	    let d2=document.getElementById("d2");
 	    d2.style.display="block";
 	    let d1=document.getElementById("d1");
